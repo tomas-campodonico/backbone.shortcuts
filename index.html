@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel='stylesheet' href='./style.css'>
+  </head>
+  <body class="main">
+  	<h1 id="shortcuts">Shortcuts</h1>
+
+	<p>A Javascript plugin to add custom keyboard shortcuts to our web application.</p>
+
+	<h2 id="dependencies">Dependencies</h2>
+
+	<ul>
+	<li><a href="https://github.com/madrobby/keymaster/">.js ~> version number</a> for keyboard shortcuts functionality</li>
+	</ul>
+
+	<h2 id="usage">Usage</h2>
+
+	<p><strong>JavaScript</strong></p>
+
+	<pre><code>var MyView = Backbone.View.extend({
+	  shortcuts: {
+	    "ctrl+a": function(e) {...},
+	    "ctrl+b": "functionName",
+	    "ctrl+c": "functionName1 functionName2",
+	    "ctrl+d shift+d": "functionName"
+	  },
+
+	  ...
+
+	}, Shortcuts);
+	</code></pre>
+
+	<p><p>You can override settings passing them as parameters to the <code>init</code> method.
+	Finally, you can press any of the key shortcuts defined to execute its handler function.</p>
+
+	<h2 id="api">API</h2>
+
+	<h3 id="attachmethod">attach method</h3>
+
+	<div class="method-description">
+	  <p>Attach all the shortcuts defined in the object <code>shortcuts</code> in the view, to the DOM.</p>
+	  
+	  <p class="subtitle">Usage</p>
+	  
+	  <p>In the view: <br />
+	  <code>this.attach();</code></p>
+	</div>
+
+	<h3 id="detachmethod">detach method</h3>
+
+	<div class="method-description">
+	  <p>Detach all the shortcuts from the DOM.</p>
+	  
+	  <p class="subtitle">Usage</p>
+	  
+	  <p>In the view: <br />
+	  <code>this.detach();</code></p>
+	</div>
+
+	<h3 id="addshortcutmethod">addShortcut method</h3>
+
+	<div class="method-description">
+	  <p>Attach a single shortcut to the DOM.</p>
+	  
+	  <p class="subtitle">Usage</p>
+	  
+	  <p>In the view: <br />
+	  <code>this.addShortcut('ctrl+a', this.functionHandler, this.ui.input);</code> </p>
+	  
+	  <p>Params: <br />
+	  1. A string with the key combination. You can includes many key combinations separeted with a space. <br />
+	  2. The function handler for the shortcut itself, or a string the its name. <br />
+	  3. The DOM element where the shortcut is being attached. It is optional, by default it's attached to the view, i.e. <code>this.$el</code> </p>
+	</div>
+
+	<h3 id="removeshortcutmethod">removeShortcut method</h3>
+
+	<div class="method-description">
+	  <p>Detach a single shortcut from the DOM.</p>
+	  
+	  <p class="subtitle">Usage</p>
+	  
+	  <p>In the view: <br />
+	  <code>this.removeShortcut('ctrl+a');</code> <br />
+	  or <br />
+	  <code>this.removeShortcut('ctrl+a', 'functionName');</code> </p>
+	</div>
+
+	<h3 id="anameinitmehodainitmethod"><a name="init-mehod"></a> init method</h3>
+
+	<p>Initialize the view with specific settings</p>
+
+	<div class="method-description">
+	  <p class="subtitle">Usage</p>
+	  
+	  <p>In the view: <br />
+	  <code>this.init({
+	  preventDefault: true
+	  });</code></p>
+	</div>
+
+	<h2 id="author">Author</h2>
+
+	<p>Tomas Campodonico, <a href="https://twitter.com/CampodonicoT">@CampodonicoT</a></p>
+
+	<h2 id="license">License</h2>
+
+	<p>This project is licensed under MIT license.</p>
+  </body>
+</html>
