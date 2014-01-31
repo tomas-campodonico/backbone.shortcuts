@@ -1,0 +1,22 @@
+{
+  "name": "backbone.shortcuts",
+  "main": "backbone.shortcuts.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/tomas-campodonico/backbone.shortcuts",
+  "authors": [
+    "Tomas Campodonico <tomas.campodonico@gmail.com>"
+  ],
+  "description": "jQuery plugin to create custom keyboard shortcuts",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "backbone": "~1.1.0"
+  }
+}

@@ -1,16 +1,31 @@
-(function() {
+/*
+** Backbone.Shortcuts API
+** 
+** @class Shortcuts
+**
+** @author "Tomas Campodonico <tomas.campodonico@gmail.com>"
+*/
+
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    return define(['jquery', 'hotkeys'], factory)
+  } else {
+    root.Shortcuts = factory(jQuery, hotkeys);
+  }
+} (this, function ($, hotkeys) {
+  'use strict';
 
   // Private methods
 
   /*
   ** Add default settings to non-overriden attributes of shortcuts object
-  ** @method _getDefaults
+  ** @method _defaults
   ** @private
   ** @param {Object} shortcuts: Contains the inital shortcuts specified by the programmer 
   */
-  var _getDefaults = function(shortcuts) {
+  /*function _defaults(shortcuts) {
 
-  };
+  };*/
 
   // Plugin for mixdown exposing the interfaces.
   var Shortcuts = {
@@ -22,6 +37,7 @@
     ** @method attach
     */
     attach: function() {
+      console.log('attach');
     },
 
     /*
@@ -29,6 +45,7 @@
     ** @method detach
     */
     detach: function() {
+      console.log('detach');
     },
 
     /*
@@ -39,15 +56,17 @@
     ** @param {String} el: (Optional. Default: this.$el). Specifies the DOM where the event is being attached to.     
     */
     addShortcut: function(keys, handler, el) {
+      console.log('addShortcut');
     },
 
     /*
     ** Detach a single shortcut from the dom.
-    ** @method removeShortcut
+    ** @method rmShortcut
     ** @param {String} keys: The key combination to be detached.
     ** @param { String || Function} handler: (Optional) Handler to be detached.
     */
-    removeShortcut: function(keys, handler) {
+    rmShortcut: function(keys, handler) {
+      console.log('rmShortcut');
     },
 
     /*
@@ -55,9 +74,10 @@
     ** @method init
     */ 
     init: function(options) {
+      console.log('init');
     }
   };
 
   return Shortcuts;
 
-})();
+}));
