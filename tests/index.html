@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Test</title>
+  <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+  <script type="text/javascript" src="hotkeys.js"></script>
+  <script type="text/javascript" src="backbone.shortcuts.js"></script>
+  <script type="text/javascript">
+
+		describe("Testing attachments", function() {
+
+  	  beforeEach(function() {
+    		Shortcuts.shortcuts = {
+  	      "ctrl+A": "testA",
+  	      "alt+up alt+down": function() {
+  	  	    res = true;
+  	      }
+  	    };
+      };
+
+ 	  	//Testing the attach method
+	  	it("attach correctly the events defined in the 'shortcuts' object", function() {
+	  		var res = null;
+
+  	    //Shortcut handler
+  	    function testA() {
+  				return 'ctrl+A';
+  	  	};
+
+  	    Shortcuts.attach();
+
+  	    //Emulate Ctrl + A keypress event
+	      var keypress = $.Event('keypress');
+	      press.ctrlKey = true;
+	      press.which = 65;
+	 	  	$(document).trigger(keypress);
+
+	    	expect(testA).toHaveBeenCalled();
+	    	expect(res).toBe(true);
+	  	});
+
+	  	//Testing the addShortcut method
+	  	it("attach correctly a single event", function() {
+	  		var keypress = $.Event('keypress'),
+	        textbox;
+
+	  		//Shortcut handler
+	  		function testB() {
+	  			return 'Up';
+	  	  };
+
+	  	  Shortcuts.addShortcut('up', 'testB', $('input'));
+		  	
+		  	//Emulate Up keypress event in an input
+	      jasmine.getFixtures().set('<input id="textbox" type="text" />');
+	      textbox = $('#textbox');
+	      press.which = 38;
+	 	  	textbox.trigger(keypress);
+		  
+		    expect(testB).toHaveBeenCalled();
+		  });
+		});
+
+		describe("Testing detachments", function() {
+
+			//Testing detach method
+		  it("detach correctly all the events", function() {
+		    expect(tape.rewind).not.toHaveBeenCalled();
+		  });
+
+		  //Testing rmShortcut method
+		  it("detach correctly a given event", function() {
+		    expect(tape.rewind).toHaveBeenCalled();
+		  });
+		});
+
+  	(function() {
+	  var jasmineEnv = jasmine.getEnv();
+	  jasmineEnv.updateInterval = 250;
+
+	  var htmlReporter = new jasmine.HtmlReporter();
+	  jasmineEnv.addReporter(htmlReporter);
+
+	  jasmineEnv.specFilter = function(spec) {
+	    return htmlReporter.specFilter(spec);
+	  };
+
+	  var currentWindowOnload = window.onload;
+	  window.onload = function() {
+	    if (currentWindowOnload) {
+	      currentWindowOnload();
+	    }
+
+	    document.querySelector('.version').innerHTML = jasmineEnv.versionString();
+	    execJasmine();
+	  };
+
+	  function execJasmine() {
+	    jasmineEnv.execute();
+	  }
+	})();
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -8,7 +8,11 @@
   <script type="text/javascript" src="hotkeys.js"></script>
   <script type="text/javascript" src="backbone.shortcuts.js"></script>
   <script type="text/javascript">
-  	console.log(Shortcuts);
+  	Shortcuts.shortcuts = {
+  	  "ctrl+a": "test"
+  	};
+
+  	Shortcuts.attach();
   </script>
 </head>
 <body>
